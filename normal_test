@@ -1,0 +1,87 @@
+pruebas_de_normalidad<-function(x)
+{
+library(normtest) ###REALIZA 5 PRUEBAS DE NORMALIDAD###
+library(nortest) ###REALIZA 10 PRUEBAS DE NORMALIDAD###
+library(moments) ###REALIZA 1 PRUEBA DE NORMALIDAD###
+
+libreria<-c('base','normtest','normtest','normtest','normtest','normtest','nortest','nortest','nortest','nortest','nortest','nortest','nortest','nortest','nortest','moments')
+prueba<-rep("",16)
+Metodo<-rep("metodo",16)
+stadistico<-rep(0,16)
+p_value<-rep(0,16)
+
+normal_test<-data.frame(libreria,prueba,Metodo,stadistico,p_value)
+normal_test$Metodo<-as.character(normal_test$Metodo)
+
+normal_test[1,3]<-(shapiro.test(x))$method
+normal_test[1,4]<-(shapiro.test(x))$statistic
+normal_test[1,5]<-(shapiro.test(x))$p.value
+
+
+normal_test[2,3]<-(ad.test(x))$method
+normal_test[2,4]<-(ad.test(x))$statistic
+normal_test[2,5]<-(ad.test(x))$p.value
+
+  
+  normal_test[3,3]<-(cvm.test(x))$method
+  normal_test[3,4]<-(cvm.test(x))$statistic
+  normal_test[3,5]<-(cvm.test(x))$p.value
+
+  normal_test[4,3]<-(lillie.test(x))$method
+  normal_test[4,4]<-(lillie.test(x))$statistic
+  normal_test[4,5]<-(lillie.test(x))$p.value
+
+  
+  normal_test[5,3]<-(pearson.test(x))$method
+  normal_test[5,4]<-(pearson.test(x))$statistic
+  normal_test[5,5]<-(pearson.test(x))$p.value
+
+  
+  normal_test[6,3]<-(sf.test(x))$method
+  normal_test[6,4]<-(sf.test(x))$statistic
+  normal_test[6,5]<-(sf.test(x))$p.value
+
+  
+  ## Aqui nortest
+  normal_test[7,3]<-(jb.norm.test(x))$method
+  normal_test[7,4]<-(jb.norm.test(x))$statistic
+  normal_test[7,5]<-(jb.norm.test(x))$p.value
+
+  normal_test[8,3]<-(frosini.norm.test(x))$method
+  normal_test[8,4]<-(frosini.norm.test(x))$statistic
+  normal_test[8,5]<-(frosini.norm.test(x))$p.value
+
+  normal_test[9,3]<-(geary.norm.test(x))$method
+  normal_test[9,4]<-(geary.norm.test(x))$statistic
+  normal_test[9,5]<-(geary.norm.test(x))$p.value
+
+  normal_test[10,3]<-(hegazy1.norm.test(x))$method
+  normal_test[10,4]<-(hegazy1.norm.test(x))$statistic
+  normal_test[10,5]<-(hegazy1.norm.test(x))$p.value
+
+  normal_test[11,3]<-(jb.norm.test(x))$method
+  normal_test[11,4]<-(jb.norm.test(x))$statistic
+  normal_test[11,5]<-(jb.norm.test(x))$p.value
+
+  normal_test[12,3]<-(kurtosis.norm.test(x))$method
+  normal_test[12,4]<-(kurtosis.norm.test(x))$statistic
+  normal_test[12,5]<-(kurtosis.norm.test(x))$p.value
+
+  normal_test[13,3]<-(skewness.norm.test(x))$method
+  normal_test[13,4]<-(skewness.norm.test(x))$statistic
+  normal_test[13,5]<-(skewness.norm.test(x))$p.value
+
+  normal_test[14,3]<-(spiegelhalter.norm.test(x))$method
+  normal_test[14,4]<-(spiegelhalter.norm.test(x))$statistic
+  normal_test[14,5]<-(spiegelhalter.norm.test(x))$p.value
+
+  normal_test[15,3]<-(wb.norm.test(x))$method
+  normal_test[15,4]<-(wb.norm.test(x))$statistic
+  normal_test[15,5]<-(wb.norm.test(x))$p.value
+
+  normal_test[16,3]<-(agostino.test(x))$method
+  normal_test[16,4]<-(agostino.test(x))$statistic[1]
+  normal_test[16,5]<-(agostino.test(x))$p.value
+
+return(normal_test)
+}
